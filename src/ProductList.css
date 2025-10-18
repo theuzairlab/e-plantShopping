@@ -160,17 +160,47 @@ body {
     width: 650px;
     font-size: 19px;
 }
-.cart{
-    color: white;
-    display: flex;
+.cart-icon-container {
+    position: relative;
+    display: inline-block;
 }
-.cart_quantity_count{
-    margin-top: 16px;
-    /* background-color: red; */
-    margin-left: 27px;
-    position: absolute;
-    font-size: 29px;
 
+.cart-badge {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    /* background-color: #ff4444; */
+    color: white;
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 14px;
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+}
+
+.product-button {
+    position: relative;
+    padding-right: 35px !important;
+}
+
+.product-button::after {
+    content: attr(data-count);
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    min-width: 16px;
+    text-align: center;
+    display: none;
+}
+
+.product-button.added::after {
+    display: inline-block;
 }
 .plantname_heading{
    display: flex;
@@ -211,12 +241,19 @@ body {
     cursor: pointer;
   }
   
-  .product-button:hover {
+  .product-button:hover:not(:disabled) {
     background-color: #45a049;
   }
   
-  .product-button.added-to-cart {
-    background-color: grey; /* Grey when product is added */
+  .product-button.added {
+    background-color: #808080;
+    cursor: not-allowed;
+  }
+
+  .product-button:disabled {
+    background-color: #808080;
+    cursor: not-allowed;
+    opacity: 0.7;
   }
   @media (max-width: 1200px) {
     .product-card {
